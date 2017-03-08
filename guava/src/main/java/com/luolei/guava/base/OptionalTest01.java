@@ -14,6 +14,9 @@ import static org.hamcrest.CoreMatchers.*;
  * 由于JDK1.8 已经支持Optional用法了
  * 因此下面测试的都是基于JDK1.8的 Optional对象
  *
+ * 通过返回Optional对象来告诉调用这个方法的人：这个方法的返回结果有可能为null
+ * 而不是返回具体对象，否则并不知道这个方法是否会返回null，那就只能都做一遍非空检查了
+ *
  * Created by 罗雷 on 2017/3/7.
  */
 public class OptionalTest01 {
@@ -131,5 +134,64 @@ public class OptionalTest01 {
         assertThat(longValue.isPresent(), is(true));
         assertThat(longValue.get(), is(7L));
     }
+
+    @Test
+    public void test5() {
+        Optional<Integer> possible = Optional.of(5);
+        Function<Integer, Optional<String>> int2optional = v -> {
+          if (v > 0) {
+              return Optional.of(String.valueOf(v));
+          } else {
+              return Optional.of(String.valueOf(-v));
+          }
+        };
+        /*
+            Optional 对象方法
+            flatMap(Function<? super T, Optional<U>> mapper)
+
+            这个方法跟上面那个咋一看，跟上面那个方法一样的，
+            然而仔细看泛型就可以看到，经过Function接口处理获取的结果为Optional<U>类型 而上一个为原本类型U,不过在处理完成后内部调用了Optional.ofNullable()方法
+         */
+        Optional<String> other = possible.flatMap(int2optional);
+        assertThat(other.isPresent(), is(true));
+        assertThat(other.get(), is("5"));
+    }
+
+    @Test(expected = NullPointerException.class)
+//    @Test
+    public void test6() {
+        /*
+            Optional 类方法
+            ofNullable(T value)
+            这里的value可以为null
+         */
+        Optional<String> possible = Optional.ofNullable(null);
+        /*
+            Optional 对象方法
+            orElse(T other)
+            如果value为null，则取给定的参数，否则取value
+         */
+        String value = possible.orElse("else");
+        assertThat(value, is("else"));
+        /*
+            Optional 对象方法
+            orElseGet(Supplier<? extends T> other)
+            如果value为null，则通过Supplier接口
+            这是一个函数式接口，就是一个get()方法来获取值
+            否则返回value
+         */
+        String otherValue = possible.orElseGet(() -> "else");
+        assertThat(otherValue, is("else"));
+
+        /*
+            Optional 对象方法
+            orElseThrow(Supplier<? extends X> exceptionSupplier) throws X
+            如果value不为null，则返回value
+            否则抛出Supplier接口返回的异常
+         */
+        String thirdValue = possible.orElseThrow(() -> new NullPointerException("Optional.get()为null"));
+    }
+
+
 
 }
