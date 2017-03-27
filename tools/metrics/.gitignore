@@ -4,11 +4,7 @@
 
 # IntelliJ project files
 .idea
-*.iml
+metrics.iml
 out
 gen
 target
-
-.settings
-.project
-.classpath
