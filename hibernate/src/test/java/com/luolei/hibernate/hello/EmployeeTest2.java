@@ -1,4 +1,4 @@
-package com.luolei.model;
+package com.luolei.hibernate.hello;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
@@ -10,15 +10,16 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * Created by 罗雷 on 2017/3/6.
+ * Created by 罗雷 on 2017/3/7.
  */
-public class EmployeeTest {
+public class EmployeeTest2 {
 
-    private static SessionFactory sessionFactory;
+    private static SessionFactory factory;
 
     public static void main(String[] args) {
-        sessionFactory = new Configuration().configure().addAnnotatedClass(Employee.class).buildSessionFactory();
-        EmployeeTest ME = new EmployeeTest();
+        factory = new Configuration().addAnnotatedClass(Employee.class).buildSessionFactory();
+
+        EmployeeTest2 ME = new EmployeeTest2();
 
       /* Add few employee records in database */
         Integer empID1 = ME.addEmployee("Zara", "Ali", 1000);
@@ -38,26 +39,30 @@ public class EmployeeTest {
         ME.listEmployees();
     }
 
-    public Integer addEmployee(String fname, String lname, int salary) {
-        Session session = sessionFactory.openSession();
+    /* Method to CREATE an employee in the database */
+    public Integer addEmployee(String fname, String lname, int salary){
+        Session session = factory.openSession();
         Transaction tx = null;
         Integer employeeID = null;
-        try {
+        try{
             tx = session.beginTransaction();
-            Employee employee = new Employee(fname, lname, salary);
+            Employee employee = new Employee();
+            employee.setFirstName(fname);
+            employee.setLastName(lname);
+            employee.setSalary(salary);
             employeeID = (Integer) session.save(employee);
             tx.commit();
-        } catch (Exception e) {
-            if (tx != null) tx.rollback();
+        }catch (HibernateException e) {
+            if (tx!=null) tx.rollback();
             e.printStackTrace();
-        } finally {
-            session.cancelQuery();
+        }finally {
+            session.close();
         }
         return employeeID;
     }
     /* Method to  READ all the employees */
     public void listEmployees( ){
-        Session session = sessionFactory.openSession();
+        Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
@@ -79,7 +84,7 @@ public class EmployeeTest {
     }
     /* Method to UPDATE salary for an employee */
     public void updateEmployee(Integer EmployeeID, int salary ){
-        Session session = sessionFactory.openSession();
+        Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();
@@ -97,7 +102,7 @@ public class EmployeeTest {
     }
     /* Method to DELETE an employee from the records */
     public void deleteEmployee(Integer EmployeeID){
-        Session session = sessionFactory.openSession();
+        Session session = factory.openSession();
         Transaction tx = null;
         try{
             tx = session.beginTransaction();

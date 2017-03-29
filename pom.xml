@@ -13,6 +13,8 @@
         <module>tools</module>
         <module>tools/quartz</module>
         <module>tools/jackson</module>
+        <module>refactor</module>
+        <module>design</module>
     </modules>
 
     <dependencyManagement>

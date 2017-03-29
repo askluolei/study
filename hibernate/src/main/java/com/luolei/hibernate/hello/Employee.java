@@ -1,4 +1,4 @@
-package com.luolei.model;
+package com.luolei.hibernate.hello;
 
 import javax.persistence.*;
 
