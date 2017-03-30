@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config>
+    <className>com.luolei.design.command.ch1.HelpCommand</className>
+    <className>com.luolei.design.command.ch1.MinimizeCommand</className>
+</config>

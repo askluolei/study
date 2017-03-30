@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config>
+    <!--RefinedAbstraction-->
+    <className>com.luolei.design.bridge.ch2.JPGImage</className>
+    <!--ConcreteImplementor-->
+    <className>com.luolei.design.bridge.ch2.WindowsImp</className>
+</config>
