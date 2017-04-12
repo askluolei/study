@@ -15,6 +15,7 @@
         <module>tools/jackson</module>
         <module>refactor</module>
         <module>design</module>
+        <module>google</module>
     </modules>
 
     <dependencyManagement>
@@ -81,7 +82,11 @@
                 <artifactId>jackson-mapper-asl</artifactId>
                 <version>1.9.13</version>
             </dependency>
-
+            <dependency>
+                <groupId>com.google.inject</groupId>
+                <artifactId>guice</artifactId>
+                <version>4.1.0</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
