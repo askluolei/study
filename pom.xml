@@ -12,7 +12,6 @@
         <module>jdk</module>
         <module>tools</module>
         <module>tools/quartz</module>
-        <module>tools/jackson</module>
         <module>refactor</module>
         <module>design</module>
         <module>google</module>
@@ -86,6 +85,17 @@
                 <groupId>com.google.inject</groupId>
                 <artifactId>guice</artifactId>
                 <version>4.1.0</version>
+            </dependency>
+            <dependency>
+                <groupId>p6spy</groupId>
+                <artifactId>p6spy</artifactId>
+                <version>3.0.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <version>1.4.195</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
