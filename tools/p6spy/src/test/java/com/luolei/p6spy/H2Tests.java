@@ -56,4 +56,26 @@ public class H2Tests {
         }
         connection.close();
     }
+
+    /**
+     * 要使用p6spy 只要在url里面  jdbc:mysql   中间加上p6spy就行了， jdbc:p6spy:mysql...
+     * @throws Exception
+     */
+    @Test
+    public void testp6spy() throws Exception {
+        Class.forName("com.p6spy.engine.spy.P6SpyDriver");
+        Connection connection = DriverManager.getConnection("jdbc:p6spy:h2:./test", "sa", "");
+
+        String sql = "SELECT * from myuser";
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()) {
+            int id = resultSet.getInt("id");
+            String name = resultSet.getString("name");
+            System.out.println(String.format("id:%s,name:%s", id, name));
+        }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
+    }
 }

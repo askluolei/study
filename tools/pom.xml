@@ -16,6 +16,8 @@
         <module>guava</module>
         <module>log4j</module>
         <module>p6spy</module>
+        <module>mybatisplus</module>
+        <module>mybatis</module>
     </modules>
 
 </project>
