@@ -1,0 +1,6 @@
+2017-06-07 20:00:40 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Syntax error in SQL statement "CREATE TABLE IF NOT EXIST[*] MYUSER( ID INT ,NAME VARCHAR(32),CONSTRAINT PK_MYSUER PRIMARY KEY (ID)) "; expected "EXISTS"; SQL statement:
+create table if not exist myuser( id int ,name varchar(32),constraint pk_mysuer PRIMARY KEY (id)) [42001-195]
+2017-06-07 20:01:55 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLException: Table "TABLE" not found; SQL statement:
+INSERT INTO TABLE myuser(id, name) VALUES (?, ?) [42102-195]

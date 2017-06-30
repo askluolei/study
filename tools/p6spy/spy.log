@@ -1,0 +1,23 @@
+|19|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|26|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|result|connection 0|SELECT * from myuser|
+|15|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|13|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|3|statement|connection 0|INSERT INTO myuser(id, name) VALUES (?, ?)|INSERT INTO myuser(id, name) VALUES (1, 'luolei')
+|15|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|1|statement|connection 0|INSERT INTO myuser(id, name) VALUES (?, ?)|INSERT INTO myuser(id, name) VALUES (2, 'xiejinlin')
+|0|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|0|resultset|connection -1|SELECT * from myuser|id = 2, name = xiejinlin
+|33|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|result|connection 0|SELECT * from myuser|
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|0|result|connection 0|SELECT * from myuser|
+|0|resultset|connection -1|SELECT * from myuser|id = 2, name = xiejinlin
+|3|statement|connection 0|INSERT INTO myuser(id, name) VALUES (?, ?)|INSERT INTO myuser(id, name) VALUES (2, 'xiejinlin')
+|17|statement|connection 0|SELECT * from myuser|SELECT * from myuser
+|0|resultset|connection -1|SELECT * from myuser|id = 1, name = luolei
+|0|resultset|connection -1|SELECT * from myuser|id = 2, name = xiejinlin

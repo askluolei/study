@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luolei.mybatis.dao.BlogMapper">
+    <select id="select" resultType="int">
+        <!-- 注意语法，mysql方法名和括号不能有空格 -->
+        SELECT COUNT(*)
+        <if test="_databaseId == 'mysql'">
+            + 1
+        </if>
+        <if test="_databaseId == 'oracle'">
+            + 2
+        </if>
+        <if test="_databaseId == 'h2'">
+            + 3
+        </if>
+        <if test="_databaseId == 'sqlserver'">
+            + 4
+        </if>
+        AS totalCount FROM BLOG
+    </select>
+</mapper>
