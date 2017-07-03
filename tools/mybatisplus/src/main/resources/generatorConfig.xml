@@ -8,6 +8,11 @@
         <property name="beginningDelimiter" value="`"/>
         <property name="endingDelimiter" value="`"/>
 
+
+        <plugin type="com.luolei.mybatisplus.plugin.MutiDatasourcePaginationPlugin">
+            <property name="primaryKey" value="id"/>
+        </plugin>
+
         <!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
         <commentGenerator>
             <property name="suppressAllComments" value="false"/>

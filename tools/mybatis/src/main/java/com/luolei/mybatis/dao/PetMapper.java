@@ -2,8 +2,9 @@ package com.luolei.mybatis.dao;
 
 import com.luolei.mybatis.model.Pet;
 import com.luolei.mybatis.model.PetExample;
-import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import java.util.List;
 
 public interface PetMapper {
     /**

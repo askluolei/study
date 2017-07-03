@@ -6,6 +6,7 @@
 
     <properties>
         <property name="h2.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <!--<property name="h2.url" value="jdbc:h2:mem:test"/>-->
         <property name="h2.url" value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:init.sql'"/>
         <property name="h2.username" value="sa"/>
         <property name="h2.password" value=""/>
@@ -21,19 +22,19 @@
         <property name="sqlserver.password" value="ebnb2017"/>
 
         <property name="oracle.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
-        <property name="oracle.url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+        <property name="oracle.url" value="jdbc:oracle:thin:@172.20.69.106:411:XE"/>
         <property name="oracle.username" value="system"/>
-        <property name="oracle.password" value="123456"/>
+        <property name="oracle.password" value="oracle"/>
     </properties>
 
     <environments default="development">
         <environment id="development">
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
-                <property name="driver" value="${oracle.driver}"/>
-                <property name="url" value="${oracle.url}"/>
-                <property name="username" value="${oracle.username}"/>
-                <property name="password" value="${oracle.password}"/>
+                <property name="driver" value="${sqlserver.driver}"/>
+                <property name="url" value="${sqlserver.url}"/>
+                <property name="username" value="${sqlserver.username}"/>
+                <property name="password" value="${sqlserver.password}"/>
             </dataSource>
         </environment>
     </environments>
@@ -46,5 +47,6 @@
     </databaseIdProvider>
     <mappers>
         <mapper resource="mapper/BlogMapper.xml"/>
+        <mapper resource="mapper/PetMapper.xml"/>
     </mappers>
 </configuration>
