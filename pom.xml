@@ -16,6 +16,7 @@
         <module>design</module>
         <module>google</module>
         <module>apache</module>
+        <module>webservice</module>
     </modules>
 
     <properties>
