@@ -15,7 +15,13 @@
         <module>metrics</module>
         <module>guava</module>
         <module>log4j</module>
+<<<<<<< HEAD
         <module>reactor</module>
+=======
+        <module>p6spy</module>
+        <module>mybatisplus</module>
+        <module>mybatis</module>
+>>>>>>> eb958ac910d60b49c6366dc8f5e8f1310f6c742f
     </modules>
 
 </project>

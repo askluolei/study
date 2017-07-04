@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.luolei.mybatis.dao.BlogMapper">
+    <select id="select" resultType="int" databaseId="h2">
+        select COUNT(*) + 1 AS totalCount FROM BLOG
+    </select>
+    <select id="select" resultType="int" databaseId="mysql">
+        select COUNT(*) + 2 AS totalCount FROM BLOG
+    </select>
+    <select id="select" resultType="int" databaseId="sqlserver">
+        select COUNT(*) + 3 AS totalCount FROM BLOG
+    </select>
+    <select id="select" resultType="int" databaseId="oracle">
+        select COUNT(*) + 4 AS totalCount FROM BLOG
+    </select>
+</mapper>

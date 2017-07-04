@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+    <properties>
+        <property name="h2.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <!--<property name="h2.url" value="jdbc:h2:mem:test"/>-->
+        <property name="h2.url" value="jdbc:h2:mem:test;INIT=RUNSCRIPT FROM 'classpath:init.sql'"/>
+        <property name="h2.username" value="sa"/>
+        <property name="h2.password" value=""/>
+
+        <property name="mysql.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <property name="mysql.url" value="jdbc:mysql://localhost:3306/test"/>
+        <property name="mysql.username" value="root"/>
+        <property name="mysql.password" value="123456"/>
+
+        <property name="sqlserver.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <property name="sqlserver.url" value="jdbc:jtds:sqlserver://v-ebg-bankTest:1433;DatabaseName=test"/>
+        <property name="sqlserver.username" value="sa"/>
+        <property name="sqlserver.password" value="ebnb2017"/>
+
+        <property name="oracle.driver" value="com.p6spy.engine.spy.P6SpyDriver"/>
+        <property name="oracle.url" value="jdbc:oracle:thin:@172.20.69.106:411:XE"/>
+        <property name="oracle.username" value="system"/>
+        <property name="oracle.password" value="oracle"/>
+    </properties>
+
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${sqlserver.driver}"/>
+                <property name="url" value="${sqlserver.url}"/>
+                <property name="username" value="${sqlserver.username}"/>
+                <property name="password" value="${sqlserver.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="SQL Server" value="sqlserver"/>
+        <property name="DB2" value="db2"/>
+        <property name="MySQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+        <property name="H2" value="h2"/>
+    </databaseIdProvider>
+    <mappers>
+        <mapper resource="mapper/BlogMapper.xml"/>
+        <mapper resource="mapper/PetMapper.xml"/>
+    </mappers>
+</configuration>
